@@ -1,0 +1,9 @@
+
+#weather-icon{
+    font-size: 70px;
+}
+
+#temp-container{
+    display: flex;
+    gap: 10px;
+}
