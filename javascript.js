@@ -10,8 +10,8 @@ const weather = document.getElementById("weather")
 let weatherLocation = locationInput.value
 
 
+//gets forecast data from API
 function getForecast(forecastLocation){
-    
     fetch(`https://api.weatherapi.com/v1/current.json?key=1bb27c67212141f19e415441232912&q=${forecastLocation}`, {mode: 'cors'})
     .then(function(response){
         if(response.status === 400){
@@ -22,43 +22,25 @@ function getForecast(forecastLocation){
     }).then(function(data){
         forecastDOM(data)
     }).catch(function(error){
-        console.log("error: ", error)
+        alert("error: location not found")
     })
-
-    
+  
 }
 
-
+//adds forecast data to the DOM
 function forecastDOM(forecastData){
     locationName.textContent = forecastData.location.name
 
     temperature.textContent = forecastData.current.temp_c + "°C"
 
     weather.textContent = forecastData.current.condition.text
-
-    if(weather.textContent.includes("rain")){
-        weatherIcon.textContent = "rainy"
-    }else if(weather.textContent.includes("cloud")){
-        weatherIcon.textContent = "filter_drama"
-    }else if(weather.textContent.includes("thunder")){
-        weatherIcon.textContent = "thunderstorm"
-    }else if(weather.textContent.includes("sun")){
-        weatherIcon.textContent = "sunny"
-    }else if(weather.textContent.includes("snow")){
-        weatherIcon.textContent = "cloudy_snowing"
-    }else{
-        weatherIcon.textContent = ""
-    }
-
-
-
 }
 
 
 
 
 
-
+//error handling
 forecastButton.addEventListener("click", () => {
     let weatherLocation = locationInput.value;
     if (weatherLocation) {
