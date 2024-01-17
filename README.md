@@ -1,1 +1,2 @@
-weather app , https://kb10g.github.io/weather-app/
+# Weather App
+A Weather App made using HTML, CSS, JavaScript, and an API from weatherapi.com
